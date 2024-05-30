@@ -4,6 +4,16 @@ import java.util.Scanner;
 
 import Team_interviewProblems.Solution.MyFraction;
 
+class TreeNode {
+    int val;
+    List<TreeNode> children;
+
+    public TreeNode(int val) {
+        this.val = val;
+        this.children = new ArrayList<>();
+    }
+}
+
 
 
 public class Problem {
