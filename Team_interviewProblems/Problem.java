@@ -25,7 +25,7 @@ public class Problem {
 
         Solution s = new Solution();
 
-//             //Tree
+            //Tree
              int N = 7;
              TreeNode[] nodes = new TreeNode[N + 1];
              int[][] edges = {{1, 2}, {1, 3}, {2, 4}, {3, 5}, {3, 6}, {5, 7}};
@@ -39,21 +39,16 @@ public class Problem {
 
              System.out.println("The diameter of the network: " + s.findNetworkDiameter(nodes[1]));
 
-            // //String
-            // System.out.println(new MyFraction(s.kmp("B", "A")));
-            // // 1/1
-            // System.out.println(new MyFraction(s.kmp("A", "A")));
-            // // 1/3
-            // System.out.println(new MyFraction(s.kmp("AABAAB", "BAABAA")));
-            // // 1/9
-            // System.out.println(new MyFraction(s.kmp("EATIWANTM", "IWANTMEAT")));
-            // // 1/16
-            // System.out.println(new MyFraction(s.kmp("ABABCABCABCABCAB", "ABCABCABCABCABAB")));
-
-
-
-            
-
+            //String
+            System.out.println(new MyFraction(s.kmp("B", "A")));
+            // 1/1
+            System.out.println(new MyFraction(s.kmp("A", "A")));
+            // 1/3
+            System.out.println(new MyFraction(s.kmp("AABAAB", "BAABAA")));
+            // 1/9
+            System.out.println(new MyFraction(s.kmp("EATIWANTM", "IWANTMEAT")));
+            // 1/16
+            System.out.println(new MyFraction(s.kmp("ABABCABCABCABCAB", "ABCABCABCABCABAB")));
             
 
             // Brute force
@@ -82,3 +77,4 @@ public class Problem {
 
     }
 }
+

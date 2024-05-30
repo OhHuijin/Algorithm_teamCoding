@@ -6,68 +6,26 @@ import java.util.Scanner;
 
 
 public class Solution {
-
-
-//     public int[] kmp(String paragraph, String pattern) {
-//         // String part: returns probability index 0 : numerator and index 1: denominator
-
-//         int cnt = 0, n = pattern.length();
-
-//         return new int[] {cnt, n};
-//     }
-
-//     public class MyFraction {
-//         private int numerator, denominator;
-    
-//         MyFraction(int[] arr) {
-//             if (arr[1] == 0) throw new IllegalArgumentException("Denominator cannot be zero.");
-//             if (arr.length != 2) throw new IllegalArgumentException("The array must be size 2.");
-//             numerator = arr[0];
-//             denominator = arr[1];
-//             makeReducedFraction(numerator, denominator);
-//         }
-    
-//         private void makeReducedFraction(int a, int b) {
-//             int tmp;
-//             while (b != 0) {
-//                 tmp = a % b;
-//                 a = b;
-//                 b = tmp;
-//             }
-//             numerator /= a;
-//             denominator /= a;
-    
-//         }
-    
-//         @Override
-//         public String toString() {
-//             if (numerator == 0)
-//                 return "0";
-//             return numerator + "/" + denominator;
-//         }
-//     }
-
-    
     public static int findNetworkDiameter(TreeNode root) {
         int answer =0;
-       int maxDiameter = 0;
-       for (TreeNode child : root.children) {
-           int height = getHeight(child);
-           for (TreeNode sibling : root.children) {
-               if (child != sibling) {
-                   int siblingHeight = getHeight(sibling);
-                   maxDiameter = Math.max(maxDiameter, height + siblingHeight + 2);
-               }
-           }
-       }
-       for (TreeNode child : root.children) {
-           maxDiameter = Math.max(maxDiameter, findNetworkDiameter(child));
-       }
-       answer = maxDiameter;
-       return answer;
-   }
+        int maxDiameter = 0;
+        for (TreeNode child : root.children) {
+            int height = getHeight(child);
+            for (TreeNode sibling : root.children) {
+                if (child != sibling) {
+                    int siblingHeight = getHeight(sibling);
+                    maxDiameter = Math.max(maxDiameter, height + siblingHeight + 2);
+                }
+            }
+        }
+        for (TreeNode child : root.children) {
+            maxDiameter = Math.max(maxDiameter, findNetworkDiameter(child));
+        }
+        answer = maxDiameter;
+        return answer;
+    }
 
-public static int getHeight(TreeNode node) {
+    public static int getHeight(TreeNode node) {
         if (node == null) return -1;
         int maxHeight = -1;
         for (TreeNode child : node.children) {
@@ -76,12 +34,10 @@ public static int getHeight(TreeNode node) {
         return maxHeight + 1;
     }
 
-    
-
     public int maxWeight(int[] ropes){
         //Greedy Algorithm: return maximum weight that the ropes can lift
         int maxWeight = 0;
-        
+
         // Sort the power array in descending order
         Arrays.sort(ropes);
         for (int i = ropes.length - 1; i >= 0; i--) {
@@ -90,7 +46,7 @@ public static int getHeight(TreeNode node) {
             // Update maxWeight if current weight is greater
             maxWeight = Math.max(maxWeight, weight);
         }
-        
+
         return maxWeight;
     }
 
@@ -110,25 +66,25 @@ public static int getHeight(TreeNode node) {
         this.rectangle.height = height;
         return new Rectangle(width, height);
     }
-    
+
     public int minSquares(int width, int height) {
         if (width == height) {
             return 1;
         }
-    
+
         int minSquares = Integer.MAX_VALUE;
-    
+
         for (int i = 1; i <= width / 2; i++) {
             minSquares = Math.min(minSquares, minSquares(i, height) + minSquares(width - i, height));
         }
-    
+
         for (int j = 1; j <= height / 2; j++) {
             minSquares = Math.min(minSquares, minSquares(width, j) + minSquares(width, height - j));
         }
-    
+
         return minSquares;
     }
-    
+
 
     public class Rectangle {
         int width;
@@ -141,6 +97,7 @@ public static int getHeight(TreeNode node) {
     }
 
     static int min;
+
     public int numRegister(int voltage) {
 
         // DP: return the number of registers that decrease the voltage into 1 V.
@@ -162,4 +119,77 @@ public static int getHeight(TreeNode node) {
         return (a < b) ? (Math.min(a, c)) : (Math.min(b, c));
     }
 
+
+    public int[] kmp(String paragraph, String pattern) {
+        int n = paragraph.length();
+        int m = pattern.length();
+
+        if (n != m) {
+            return new int[] {0, 1};
+        }
+
+        int[] lps = computeLPSArray(pattern);
+
+        String combined = paragraph + paragraph;
+
+        int count = 0;
+        int i = 0;
+        int j = 0;
+        while (i < 2 * n - 1) {
+            if (pattern.charAt(j) == combined.charAt(i)) {
+                i++;
+                j++;
+                if (j == m) {
+                    count++;
+                    j = lps[j - 1];
+                }
+            } else {
+                if (j != 0) {
+                    j = lps[j - 1];
+                } else {
+                    i++;
+                }
+            }
+        }
+
+        int denominator = n;
+        int numerator = count;
+
+        int gcd = gcd(numerator, denominator);
+        numerator /= gcd;
+        denominator /= gcd;
+
+        return new int[] {numerator, denominator};
+    }
+
+    private int[] computeLPSArray(String pattern) {
+        int length = 0;
+        int i = 1;
+        int m = pattern.length();
+        int[] lps = new int[m];
+        lps[0] = 0;
+
+        while (i < m) {
+            if (pattern.charAt(i) == pattern.charAt(length)) {
+                length++;
+                lps[i] = length;
+                i++;
+            } else {
+                if (length != 0) {
+                    length = lps[length - 1];
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+        return lps;
+    }
+
+    private int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    
 }
