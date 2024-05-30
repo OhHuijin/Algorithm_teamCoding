@@ -18,6 +18,15 @@ public class Problem {
             System.out.println("The diameter of the network: " + Solution.findNetworkDiameter(nodes[1]));
 
             //String
+            System.out.println(new MyFraction(s.kmp("B", "A")));
+            // 1/1
+            System.out.println(new MyFraction(s.kmp("A", "A")));
+            // 1/3
+            System.out.println(new MyFraction(s.kmp("AABAAB", "BAABAA")));
+            // 1/9
+            System.out.println(new MyFraction(s.kmp("EATIWANTM", "IWANTMEAT")));
+            // 1/16
+            System.out.println(new MyFraction(s.kmp("ABABCABCABCABCAB", "ABCABCABCABCABAB")));
 
 
 
