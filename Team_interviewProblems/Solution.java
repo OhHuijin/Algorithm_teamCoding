@@ -50,29 +50,35 @@ public class Solution {
 //     }
 
     
-//    public int findNetworkDiameter(TreeNode root) {
+public static int findNetworkDiameter(TreeNode root) {
+        int answer =0;
+       int maxDiameter = 0;
+       for (TreeNode child : root.children) {
+           int height = getHeight(child);
+           for (TreeNode sibling : root.children) {
+               if (child != sibling) {
+                   int siblingHeight = getHeight(sibling);
+                   maxDiameter = Math.max(maxDiameter, height + siblingHeight + 2);
+               }
+           }
+       }
+       for (TreeNode child : root.children) {
+           maxDiameter = Math.max(maxDiameter, findNetworkDiameter(child));
+       }
+       answer = maxDiameter;
+       return answer;
+   }
 
-//         // Tree part: returns: maximum latency 
-
-//         //* TreeNode class is
-//    }
-
-   class TreeNode {
-
-    int val;
-
-    List<TreeNode> children;
-
- 
-
-    public TreeNode(int val) {
-
-        this.val = val;
-
-        this.children = new ArrayList<>();
-
+public static int getHeight(TreeNode node) {
+        if (node == null) return -1;
+        int maxHeight = -1;
+        for (TreeNode child : node.children) {
+            maxHeight = Math.max(maxHeight, getHeight(child));
+        }
+        return maxHeight + 1;
     }
-}
+
+    
 
     public int maxWeight(int[] ropes){
         //Greedy Algorithm: return maximum weight that the ropes can lift
