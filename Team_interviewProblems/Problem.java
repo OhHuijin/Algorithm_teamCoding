@@ -46,7 +46,7 @@ public class Problem {
 
             
 
-            //Brute force
+            // Brute force
             Solution.Rectangle rectangle = s.getInput();
             int minSquares = s.minSquares(rectangle.width, rectangle.height);
             System.out.println("Minimum number of squares: " + minSquares);
@@ -67,7 +67,7 @@ public class Problem {
 
             N = scanner.nextInt();
 
-            System.out.println("Minimum number of registers:" + s.countRegisters(N));
+            System.out.println("Minimum number of registers:" + s.numRegister(N));
 
 
     }

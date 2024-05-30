@@ -137,14 +137,14 @@ public class Solution {
     }
 
     static int min;
-    public int countRegisters(int N) {
+    public int numRegister(int voltage) {
 
-        /* Complete this method */
-        int OverLimit=N+1;
-        int[] D =new int[N*3+1];
+        // DP: return the number of registers that decrease the voltage into 1 V.
+        int OverLimit=voltage+1;
+        int[] D =new int[voltage*3+1];
         Arrays.fill(D, OverLimit);
-        D[N]=0;
-        for(int i=N-1; i>0; i--){
+        D[voltage]=0;
+        for(int i=voltage-1; i>0; i--){
             D[i]=FindSmallest(D[i*3],D[i*2],D[i+1])+1;
         }
 
