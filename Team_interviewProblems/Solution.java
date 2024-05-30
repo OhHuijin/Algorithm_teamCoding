@@ -1,11 +1,9 @@
 package Team_interviewProblems;
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
-import javax.swing.tree.TreeNode;
+
 
 public class Solution {
 
@@ -50,7 +48,7 @@ public class Solution {
 //     }
 
     
-public static int findNetworkDiameter(TreeNode root) {
+    public static int findNetworkDiameter(TreeNode root) {
         int answer =0;
        int maxDiameter = 0;
        for (TreeNode child : root.children) {

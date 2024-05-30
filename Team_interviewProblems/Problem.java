@@ -1,8 +1,8 @@
 package Team_interviewProblems;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import Team_interviewProblems.Solution.MyFraction;
 
 class TreeNode {
     int val;
@@ -25,19 +25,19 @@ public class Problem {
 
         Solution s = new Solution();
 
-            // //Tree
-            // int N = 7;
-            // TreeNode[] nodes = new TreeNode[N + 1];
-            // int[][] edges = {{1, 2}, {1, 3}, {2, 4}, {3, 5}, {3, 6}, {5, 7}};
-            // for (int i = 1; i <= N; i++) {
-            //     nodes[i] = new TreeNode(i);
-            // }
-            // for (int[] list : edges) {
-            //     int parent = list[0]; int child = list[1];
-            //     nodes[parent].children.add(nodes[child]);
-            // }
-            
-            // System.out.println("The diameter of the network: " + Solution.findNetworkDiameter(nodes[1]));
+//             //Tree
+             int N = 7;
+             TreeNode[] nodes = new TreeNode[N + 1];
+             int[][] edges = {{1, 2}, {1, 3}, {2, 4}, {3, 5}, {3, 6}, {5, 7}};
+             for (int i = 1; i <= N; i++) {
+                 nodes[i] = new TreeNode(i);
+             }
+             for (int[] list : edges) {
+                 int parent = list[0]; int child = list[1];
+                 nodes[parent].children.add(nodes[child]);
+             }
+
+             System.out.println("The diameter of the network: " + s.findNetworkDiameter(nodes[1]));
 
             // //String
             // System.out.println(new MyFraction(s.kmp("B", "A")));
