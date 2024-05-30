@@ -1,9 +1,44 @@
 package Team_interviewProblems;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.tree.TreeNode;
+
 public class Solution {
+    
+    public int[] kmp(String paragraph, String pattern) {
+        // String part: returns probability index 0 : numerator and index 1: denominator
+
+
+    } 
+
+   public int findNetworkDiameter(TreeNode root) {
+
+        // Tree part: returns: maximum latency 
+
+        //* TreeNode class is
+   }
+
+   class TreeNode {
+
+    int val;
+
+    List<TreeNode> children;
+
+ 
+
+    public TreeNode(int val) {
+
+        this.val = val;
+
+        this.children = new ArrayList<>();
+
+    }
+}
+
     public int maxWeight(int[] ropes){
         //Greedy Algorithm: return maximum weight that the ropes can lift
         int maxWeight = 0;
@@ -20,7 +55,7 @@ public class Solution {
         return maxWeight;
     }
 
-        private Rectangle rectangle;
+    private Rectangle rectangle;
 
     public Solution() {
         this.rectangle = new Rectangle(0, 0); // Initialize with default values
